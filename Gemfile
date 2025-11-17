@@ -9,7 +9,7 @@ gem "rails", "~> 7.1.0"
 gem "sprockets-rails"
 
 # Use PostgreSQL the database for Active Record
-#gem "PostgreSQL", "~> 0.5"
+gem "PostgreSQL", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
