@@ -50,6 +50,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop', '1.71.2', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -58,7 +59,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
+    gem 'pg'
 end
 
 group :test do
