@@ -1,5 +1,3 @@
-# テーブル設計
-
 ## users テーブル
 
 | Column             | Type   | Options     |
@@ -14,7 +12,6 @@
 | birth_date         | date   | null: false |
 
 ### Association
-
 
 - has_many :items
 - has_many :orders 
@@ -37,7 +34,6 @@
 
 - belongs_to :user
 - has_one :order
-
 
 ## orders テーブル
 | Column  | Type       | Options                        |
