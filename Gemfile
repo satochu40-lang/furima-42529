@@ -47,6 +47,8 @@ gem "bootsnap"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -72,4 +74,10 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'rspec-rails' 
+
+group :development do
+gem 'faker'
+end
 
