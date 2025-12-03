@@ -81,3 +81,4 @@ group :development do
 gem 'faker'
 end
 
+#gem 'rails-i18n'

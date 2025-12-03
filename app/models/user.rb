@@ -2,8 +2,8 @@
   # Deviseの設定（この上に追記）
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         has_many :items
-         has_many :orders 
+         #has_many :items
+         #has_many :orders 
   
   # --- 独自項目のバリデーション設定 ---
   

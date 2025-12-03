@@ -1,12 +1,10 @@
 class ApplicationController < ActionController::Base
-  # Deviseのコントローラーが呼ばれる前に、configure_permitted_parametersメソッドを実行
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
   
-  private
-  
+  private 
   def configure_permitted_parameters
   
-    # sign_up（新規登録）の際に、以下のパラメータの入力を許可する
     devise_parameter_sanitizer.permit(:sign_up, keys: [
       :nick_name, 
       :last_name, 
@@ -20,11 +18,7 @@ class ApplicationController < ActionController::Base
     # devise_parameter_sanitizer.permit(:account_update, keys: [ ... ])
   end
 end
- private
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-  end
-
+ 
   private
 
   def basic_auth
