@@ -7,21 +7,21 @@ RSpec.describe User, type: :model do
   end    
   
     describe 'ユーザー新規登録' do
-    context '新規登録できるとき' do 
-    end  
-    it 'nick nameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
 
+    end  
+    context '新規登録できるとき' do 
+    it 'nick nameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
     expect(@user).to be_valid
     end
     end
-    context '新規登録できないとき' do 
-    end   
+    
+    context '新規登録できないとき' do   
     it 'nick nameが空では登録できない' do 
      @user.nick_name = '' 
      @user.valid? 
      expect(@user.errors.full_messages).to include("Nick name can't be blank")
     end
-
+    end
     it 'emailが空では登録できない' do
      @user.email = ''  
      @user.valid?
@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
      it '英字のみのパスワードでは登録できない' do 
         @user.password= 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid. Include both letters and numbers")
       end
     it '数字のみのパスワードでは登録できない' do
         @user.password = '111111' 
