@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_11_24_095249) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_04_071850) do
+  create_table "items", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id"
+    t.text "info"
+    t.integer "price"
+    t.integer "category_id"
+    t.integer "sales_status_id"
+    t.integer "shipping_fee_payer_id"
+    t.integer "prefecture_id"
+    t.integer "scheduled_delivery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "nick_name", default: "", null: false
     t.string "email", default: "", null: false

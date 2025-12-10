@@ -1,5 +1,15 @@
 class ItemsController < ApplicationController
   def index
-    # 例: @items = Item.all などを記述する場所です。
+      @item = Item.order("created_at DESC")
   end
+
+  def new
+     @item = Item.new 
+     @categories = Category.all
+     @status = Status.all
+     @shipping_fees = ShippingFee.all
+  end
+  def item_params
+  params.require(:item).permit(:item_name, :price, :description, ) # :item_nameを許可する
+end
 end

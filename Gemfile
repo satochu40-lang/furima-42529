@@ -80,5 +80,5 @@ gem 'rspec-rails'
 group :development do
 gem 'faker'
 end
-
+gem 'active_hash'
 #gem 'rails-i18n'
