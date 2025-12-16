@@ -11,17 +11,15 @@ class Item < ApplicationRecord
     validates :image, presence: true
     validates :name, presence: true
     validates :description, presence: true
-    validates :price, numericality: { 
-    only_integer: true, 
-    greater_than_or_equal_to: 300, 
-    less_than_or_equal_to: 9_999_999, 
-    message: "は半角数字で、300円〜9,999,999円の範囲で入力してください"
-  } 
-   validates :category_id, presence: true
-   validates :sales_status_id, presence: true
-   validates :shipping_fee_payer_id, presence: true 
-   validates :prefecture_id,  presence: true 
-   validates :scheduled_delivery_id, presence: true 
+    validates :price, numericality: { other_than: 1 , message: "can't be blank"}
+    validates :price, numericality: { other_than: 1 , message: "is not numder"}
+
+    validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
+    validates :sales_status_id,numericality: { other_than: 1 , message: "can't be blank"}
+    validates :shipping_fee_payer_id, numericality: { other_than: 1 , message: "can't be blank"}
+
+    validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
+    validates :scheduled_delivery_id, numericality: { other_than: 1 , message: "can't be blank"}
 
    has_one_attached :image 
   # コメントとの関連付け
