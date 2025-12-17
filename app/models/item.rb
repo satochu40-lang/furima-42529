@@ -15,8 +15,8 @@ class Item < ApplicationRecord
     validates :price, numericality: { other_than: 1 , message: "is not numder"}
     validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: "は半角数字で入力してください" }
   
-    # 2. 数値の範囲を検証 (¥300〜¥9,999,999)
-    validates :price, numericality: { 
+  # 2. 数値の範囲を検証 (¥300〜¥9,999,999)
+  validates :price, numericality: { 
     only_integer: true, 
     
     # ⭐️ greater_than_or_equal_to のメッセージオプションを削除 ⭐️
