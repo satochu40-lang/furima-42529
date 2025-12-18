@@ -18,6 +18,7 @@ class Item < ApplicationRecord
     # 2. 数値の範囲を検証 (¥300〜¥9,999,999)
     validates :price, numericality: { 
     only_integer: true, 
+    allow_nil: true,
     
     # ⭐️ greater_than_or_equal_to のメッセージオプションを削除 ⭐️
     greater_than_or_equal_to: 300, 
