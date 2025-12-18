@@ -12,11 +12,11 @@ class Item < ApplicationRecord
     validates :name, presence: true
     validates :description, presence: true
     validates :price, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :price, numericality: { other_than: 1 , message: "is not numder"}
-    validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: "は半角数字で入力してください" }
+    validates :price, numericality: { other_than: 1 , message: "is not a number"}
+    
   
-  # 2. 数値の範囲を検証 (¥300〜¥9,999,999)
-  validates :price, numericality: { 
+    # 2. 数値の範囲を検証 (¥300〜¥9,999,999)
+    validates :price, numericality: { 
     only_integer: true, 
     
     # ⭐️ greater_than_or_equal_to のメッセージオプションを削除 ⭐️
