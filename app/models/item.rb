@@ -37,8 +37,7 @@ class Item < ApplicationRecord
 
    has_one_attached :image 
   # コメントとの関連付け
-   has_many :comments, dependent: :destroy
-    has_one :order
+    #has_one :order
 
    
 end  
