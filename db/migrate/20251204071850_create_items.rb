@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration[7.1]
   def change
     create_table :items do |t|
-      t.string     :name
+      t.string     :name,null:false
       t.text       :description
       t.references :user                 
       t.integer    :price  
@@ -13,7 +13,6 @@ class CreateItems < ActiveRecord::Migration[7.1]
       t.timestamps
     end
    
-   def change
       change_column_null :items, :name, false
       change_column_null :items, :description, false
       change_column_null :items, :price, false
@@ -25,7 +24,6 @@ class CreateItems < ActiveRecord::Migration[7.1]
     
       # ⭐️ user_id も追加する場合
       change_column_null :items, :user_id, false
-    end
  end
 end
 
