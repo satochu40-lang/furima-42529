@@ -26,7 +26,10 @@ class Item < ApplicationRecord
     # ⭐️ less_than_or_equal_to のメッセージオプションを削除 ⭐️
     less_than_or_equal_to: 9999999
   }
-  
+   def sold_out?
+      #order.present? # 注文データがあれば true、なければ false を自動で返す
+      true
+   end
 
     validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :sales_status_id,numericality: { other_than: 1 , message: "can't be blank"}
