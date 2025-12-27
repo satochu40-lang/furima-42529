@@ -36,6 +36,11 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id]) # URLに含まれるidを使って、特定の1件を取得
     end
 
+   def edit
+    @item = Item.find(params[:id])
+    @categories = Category.all
+   end
+   
   private
     # ... ストロングパラメータの定義 ...
   
