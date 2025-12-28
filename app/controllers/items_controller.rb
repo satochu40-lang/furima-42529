@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
       @scheduled_deliveries = ScheduledDelivery.all
      
    if @item.save
-      redirect_to root_path # 例としてトップページへ
+      redirect_to root_path 
     else
     
       render :new, status: :unprocessable_entity
@@ -54,12 +54,12 @@ class ItemsController < ApplicationController
   private
    def move_to_index
      @item = Item.find(params[:id])
-     # 「出品者とログインユーザーが違う」ならトップページへ
+
      if @item.user_id != current_user.id
       redirect_to root_path
     end
   end
-    # ... ストロングパラメータの定義 ...
+  
   
     
 
