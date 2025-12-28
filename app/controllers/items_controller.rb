@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!, except: [:index,:show] 
+    before_action :move_to_index, only: [:edit]
   def index
      # @items = Item.all
      @items = Item.order("created_at DESC")
@@ -40,8 +41,24 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @categories = Category.all
    end
-   
+
+    def update
+    @item = Item.find(params[:id]) # 1. 編集する商品を見つける
+     if @item.update(item_params)   # 2. データを更新する
+      redirect_to item_path(@item) # 3. 成功したら詳細画面へ
+    else
+      render :edit                 # 4. 失敗したら編集画面を再表示
+  end
+  end
+  
   private
+   def move_to_index
+     @item = Item.find(params[:id])
+     # 「出品者とログインユーザーが違う」ならトップページへ
+     if @item.user_id != current_user.id
+      redirect_to root_path
+    end
+  end
     # ... ストロングパラメータの定義 ...
   
     
