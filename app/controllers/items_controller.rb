@@ -43,11 +43,11 @@ class ItemsController < ApplicationController
    end
 
     def update
-    @item = Item.find(params[:id]) # 1. 編集する商品を見つける
-     if @item.update(item_params)   # 2. データを更新する
-      redirect_to item_path(@item) # 3. 成功したら詳細画面へ
+    @item = Item.find(params[:id]) 
+     if @item.update(item_params)   
+      redirect_to item_path(@item) 
     else
-      render :edit                 # 4. 失敗したら編集画面を再表示
+     render :edit, status: :unprocessable_entity 
   end
   end
   
