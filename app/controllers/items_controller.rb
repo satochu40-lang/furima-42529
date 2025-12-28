@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!, except: [:index,:show] 
-    before_action :move_to_index, only: [:edit]
+    before_action :set_item, only: [:show, :edit, :update]
+    before_action :move_to_index, only: [:edit, :update]
   def index
-     # @items = Item.all
+     
      @items = Item.order("created_at DESC")
   end
 
@@ -33,15 +34,6 @@ class ItemsController < ApplicationController
     end
   end
 
-    def show
-      @item = Item.find(params[:id]) # URLに含まれるidを使って、特定の1件を取得
-    end
-
-   def edit
-    @item = Item.find(params[:id])
-    @categories = Category.all
-   end
-
     def update
     @item = Item.find(params[:id]) 
      if @item.update(item_params)   
@@ -52,7 +44,10 @@ class ItemsController < ApplicationController
   end
   
   private
-   def move_to_index
+    def set_item
+      @item = Item.find(params[:id])
+    end
+    def move_to_index
      @item = Item.find(params[:id])
 
      if @item.user_id != current_user.id
