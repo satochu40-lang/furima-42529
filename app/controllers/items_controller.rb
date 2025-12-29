@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!, except: [:index,:show] 
+    before_action :set_item, only: [:show, :edit, :update]
+    before_action :move_to_index, only: [:edit, :update]
   def index
-     # @items = Item.all
+     
      @items = Item.order("created_at DESC")
   end
 
@@ -15,6 +17,9 @@ class ItemsController < ApplicationController
      @scheduled_deliveries = ScheduledDelivery.all
     
    end
+      def show
+      
+   end
 
    def create
       @item = Item.new(item_params)
@@ -25,19 +30,34 @@ class ItemsController < ApplicationController
       @scheduled_deliveries = ScheduledDelivery.all
      
    if @item.save
-      redirect_to root_path # 例としてトップページへ
+      redirect_to root_path 
     else
     
       render :new, status: :unprocessable_entity
     end
   end
 
-    def show
-      @item = Item.find(params[:id]) # URLに含まれるidを使って、特定の1件を取得
-    end
-
+    def update
+   
+     if @item.update(item_params)   
+      redirect_to item_path(@item) 
+    else
+     render :edit, status: :unprocessable_entity 
+  end
+  end
+  
   private
-    # ... ストロングパラメータの定義 ...
+    def set_item
+      @item = Item.find(params[:id])
+    end
+    def move_to_index
+    
+
+     if @item.user_id != current_user.id
+      redirect_to root_path
+    end
+  end
+  
   
     
 
