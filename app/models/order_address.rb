@@ -13,6 +13,9 @@ class OrderAddress
     validates :phone_number, format: {with: /\A[0-9]{10,11}\z/, message: "は10桁または11桁の半角数字で入力してください"}
     validates :token, presence: true
   end
+    validates :token
+    # ----------------
+  end
 
   def save
     # すべての処理を一つの塊（トランザクション）にする

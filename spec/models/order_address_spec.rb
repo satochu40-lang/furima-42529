@@ -25,6 +25,23 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Post code can't be blank")
       end
     
+      it 'user_idが空だと保存できないこと' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと保存できないこと' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
+
+      it 'tokenが空だと保存できないこと' do
+        @order_address.token = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
+      end
 
       it '郵便番号は、「3桁ハイフン4桁」の半角文字列のみ保存可能なこと' do
         @order_address.post_code = '1234567'
