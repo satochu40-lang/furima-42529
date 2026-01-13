@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:index, :create] 
-  before_action :move_to_index, only: [:index, :create]
-
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   def index
   @order_address = OrderAddress.new
   @item = Item.find(params[:item_id])
@@ -41,10 +40,12 @@ end
     @item = Item.find(params[:item_id])
   end
   def move_to_index
-
-   if current_user.id == @item.user_id # || @item.order.present?
+  # 条件1：出品者が自分である場合
+  # 条件2：すでに商品が売却済み（orderが存在する）である場合
+  # どちらか一方でも当てはまれば、トップページ（root）へリダイレクト
+  if current_user.id == @item.user_id || @item.order.present?
     redirect_to root_path
-   end
+  end
 end
   def order_params
   
