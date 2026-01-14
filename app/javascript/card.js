@@ -18,7 +18,7 @@ const pay = () => {
 
   const form = document.getElementById('charge-form');
   form.addEventListener("submit", (e) => {
-    console.log("イベントが発火しました！");
+  
     e.preventDefault();
 
     payjp.createToken(numberElement).then(function (response) {
