@@ -21,7 +21,6 @@ class ApplicationController < ActionController::Base
       :birth_date
     ])
     
-    # 必要であれば、account_update（情報更新）の際にも同様に許可します
     # devise_parameter_sanitizer.permit(:account_update, keys: [ ... ])
   end
 end
