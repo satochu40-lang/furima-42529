@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       :birth_date
     ])
     
-    # devise_parameter_sanitizer.permit(:account_update, keys: [ ... ])
+    #devise_parameter_sanitizer.permit(:account_update, keys: [ ... ])
   end
 end
  
